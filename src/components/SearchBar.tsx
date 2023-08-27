@@ -1,3 +1,5 @@
+"use client"
+
 import { useSearch } from '@/contexts/SearchContext'
 import { useState } from 'react'
 import { BiSearchAlt } from 'react-icons/bi'
