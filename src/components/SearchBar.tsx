@@ -1,12 +1,13 @@
 "use client"
 
 import { useSearch } from '@/contexts/SearchContext'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { BiSearchAlt } from 'react-icons/bi'
 
 export const SearchBar = () => {
+  const router = useRouter()
   const [ query, setQuery ] = useState<string>('')
-  const { handleSearch } = useSearch()
 
   return (
     <span className="flex justify-center items-center my-4 px-4">
@@ -22,7 +23,7 @@ export const SearchBar = () => {
 
         <span
           className="flex justify-center cursor-pointer px-2 items-center rounded-r-lg"
-          onClick={() => handleSearch(query)}
+          onClick={() => router.replace(`/${query}`)}
         >
           <BiSearchAlt size={30} />
         </span>

@@ -1,15 +1,10 @@
-import { Header } from "@/components/Header"
-import { SearchBar } from "@/components/SearchBar"
-
 const Home = () => {
   return (
-    <>
-      <Header />
-      
-      <div className="flex flex-col">
-				<SearchBar />
-			</div>
-    </>
+    <div className="mx-auto">
+      <p>
+        Digite alguma empresa para aparecer resultados.
+      </p>
+    </div>
   )
 }
 
