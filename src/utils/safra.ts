@@ -12,8 +12,8 @@ const getUrl = async (enterprise_name: string) => {
   const exePath = chromeExecPaths[process.platform]
 
   const url = `https://www.safra.com.br/resultado-de-busca.htm?query=${enterprise_name}`
-  const browser = await puppeteer.launch({ args: [], executablePath: exePath, headless: true })
-  // const browser = await puppeteer.launch({ args: chrome.args, executablePath: await chrome.executablePath(), headless: chrome.headless })
+  // const browser = await puppeteer.launch({ args: [], executablePath: exePath, headless: true })
+  const browser = await puppeteer.launch({ args: chrome.args, executablePath: await chrome.executablePath(), headless: chrome.headless })
   const page = await browser.newPage()
   page.setDefaultNavigationTimeout(60000)
 
