@@ -1,20 +1,34 @@
-import { Stock } from "@/components/Stock"
-import { StockProps } from "@/types"
+"use client";
 
-const Page = async ({ params }: { params: { stock: string } }) => {
-  const stock = params.stock
+import { Stock } from "@/components/Stock";
+import { StockProps } from "@/types";
+import fetchWithTimeout from "@/utils/fetchTimeout";
+import { useEffect, useState } from "react";
 
-  const res = await fetch(`https://ck-scrape-stocks.vercel.app/api/${stock}`, {cache: 'no-store'})
-  const data: StockProps= await res.json().catch(e => console.error(e))
-  console.log(typeof data)
-  console.table(data)
+const Page = ({ params }: { params: { stock: string } }) => {
+  const [data, setData] = useState<StockProps | null>(null);
 
+  useEffect(() => {
+    const stock = params.stock;
+    fetchWithTimeout<StockProps>("/api/" + stock).then(({ data }) => {
+      console.table(data);
+      setData(data)
+    });
+  }, []);
+
+  if (!data) {
+    return (
+      <div className="flex flex-col space-y-4 justify-center sm:space-y-0 sm:grid sm:gap-4 sm:grid-cols-2 lg:gap-8 lg:grid-cols-3 px-4">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col space-y-4 justify-center sm:space-y-0 sm:grid sm:gap-4 sm:grid-cols-2 lg:gap-8 lg:grid-cols-3 px-4">
       <Stock {...data} />
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
