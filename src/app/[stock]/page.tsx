@@ -4,7 +4,14 @@ import { StockProps } from "@/types"
 const Page = async ({ params }: { params: { stock: string } }) => {
   const stock = params.stock
 
-  const res = await fetch(`https://ck-scrape-stocks.vercel.app/api/${stock}`, {cache: 'no-store'})
+  const res = await fetch(`https://api-scrape-stocks.onrender.com`, {
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(stock)
+  })
   const data: StockProps= await res.json().catch(e => console.error(e))
   console.log(typeof data)
   console.table(data)
