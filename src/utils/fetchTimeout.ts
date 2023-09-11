@@ -10,6 +10,11 @@ async function fetchWithTimeout<T = any>(
   const response = await fetch(url, {
     ...options,
     signal: controller.signal,
+    
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    
   });
   clearTimeout(id);
 
