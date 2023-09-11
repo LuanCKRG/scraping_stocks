@@ -10,11 +10,22 @@ const Page = ({ params }: { params: { stock: string } }) => {
 
   useEffect(() => {
     const stock = params.stock;
-    fetchWithTimeout<StockProps>("/api/" + stock).then(({ data }) => {
-      console.table(data);
-      setData(data)
-    });
-  }, []);
+    const BASE_URL = "https://api-scrape-stocks.onrender.com/";
+    // const BASE_URL = "http://localhost:3000/";
+
+    const body = JSON.stringify({ enterprise: stock });
+
+    fetchWithTimeout(BASE_URL, {
+      method: "POST",
+      body: body,
+      timeout: 5 * 60 * 1000,
+    })
+      .then(async ({ data }) => {
+        console.table(data);
+        setData(data);
+      })
+      .catch((e) => console.error(e));
+  }, [params]);
 
   if (!data) {
     return (

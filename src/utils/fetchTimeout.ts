@@ -1,6 +1,6 @@
 async function fetchWithTimeout<T = any>(
   url: string,
-  options?: { timeout: number }
+  options?: RequestInit & { timeout: number }
 ): Promise<Response & { data: T }> {
   const { timeout = 8000 } = options || {};
 
