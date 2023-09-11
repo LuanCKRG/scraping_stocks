@@ -23,7 +23,7 @@ export const SearchBar = () => {
 
         <span
           className="flex justify-center cursor-pointer px-2 items-center rounded-r-lg"
-          onClick={() => router.replace(`/${query}`)}
+          onClick={() => router.push(`/${query}`)}
         >
           <BiSearchAlt size={30} />
         </span>
