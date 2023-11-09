@@ -1,4 +1,4 @@
-export const Page = () => {
+const Page = () => {
   return (
     <p className="text-center">
       Digite um ticker para obter resultados...
