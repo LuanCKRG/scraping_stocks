@@ -2,11 +2,7 @@ import { ButtonSignOut } from "@/components/ButtonSignOut"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 
-export const Dashboard = async () => {
-  const supabase = createServerComponentClient({cookies})
-  
-  
-
+const Dashboard = async () => {  
   return (
     <div>
       <ButtonSignOut text="Sair" />

@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Header } from "@/components/Header"
 
-export const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
+const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = createServerComponentClient({cookies})
   const {data: {session}} = await supabase.auth.getSession()
 
