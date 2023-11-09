@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    
+    "update:types": "npx supabase gen types typescript --project-id 'voiiwemgmghaklauvzdy' --schema public > src/types/index.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
