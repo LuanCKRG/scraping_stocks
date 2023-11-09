@@ -4,8 +4,6 @@ import { Database } from "@/types"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 
-export const dynamic = "force-dynamic"
-
 const Page = async ({params}: {params: {ticker: string}}) => {
   const ticker = params.ticker.toUpperCase()
 
@@ -31,4 +29,5 @@ const Page = async ({params}: {params: {ticker: string}}) => {
   }
 }
 
+export const dynamic = "force-dynamic"
 export default Page
