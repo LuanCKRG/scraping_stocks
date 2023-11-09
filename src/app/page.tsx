@@ -1,11 +1,7 @@
+import { redirect } from "next/navigation"
+
 const Home = () => {
-  return (
-    <div className="mx-auto">
-      <p>
-        Digite alguma empresa para aparecer resultados.
-      </p>
-    </div>
-  )
+  redirect('/dashboard')
 }
 
 export default Home

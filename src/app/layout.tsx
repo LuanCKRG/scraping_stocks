@@ -1,11 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-
-import { Header } from '@/components/Header'
-import { SearchBar } from '@/components/SearchBar'
-import { SearchProvider } from '@/contexts/SearchContext'
-
 import './globals.css'
+// import { UserProvider } from '@/contexts/UserProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,15 +14,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <SearchProvider>
-          <Header />
-
-          <div className="flex flex-col">
-            <SearchBar />
-
-            {children}
-          </div>
-        </SearchProvider>
+          {children}
       </body>
     </html>
   )
