@@ -9,6 +9,8 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
 import { Database } from "@/types"
 import { InvalidCredentialsError } from "@/use-cases/errors/invalid-credentials-error"
+import Link from "next/link"
+import { EmailNotConfirmedError } from "@/use-cases/errors/email-not-confirmed-error"
 
 const loginUserSchema = z.object({
   email: z.string()
@@ -42,6 +44,10 @@ export const FormLogin = () => {
         throw new InvalidCredentialsError()
       }
 
+      if(error?.message === "Email not confirmed") {
+        throw new EmailNotConfirmedError()
+      }
+
       if(error) {
         throw error
       }
@@ -51,6 +57,8 @@ export const FormLogin = () => {
 
     } catch (err) {
       if(err instanceof InvalidCredentialsError) {
+        setMessage({text: err.message, error: true})
+      } else if(err instanceof EmailNotConfirmedError) {
         setMessage({text: err.message, error: true})
       } else {
         console.error(err)
@@ -84,6 +92,16 @@ export const FormLogin = () => {
 
         <Form.Button text="Login" />
       </form>
+      <div className="text-sm text-center mt-2">
+        <p>
+          Ainda não tem uma conta?
+        </p>
+        <p className="underline text-blue-400">
+          <Link href="/signup">
+            Cadastre-se
+          </Link>
+        </p>
+      </div>
     </FormProvider>
   )
 }

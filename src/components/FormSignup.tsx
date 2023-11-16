@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from './Form'
 import { UserAlreadyExistsError } from '@/use-cases/errors/user-already-existss-error'
 import { Database } from '@/types'
+import Link from 'next/link'
 
 const createUserSchema = z.object({
   name: z.string()
@@ -64,7 +65,8 @@ export const FormSignup = () => {
       const {error} = await supabase.auth.signUp({...data, options: {
         data: {
           user_name: data.name
-        }
+        },
+        emailRedirectTo: `${location.origin}/auth/callback`
       }})
 
 
@@ -73,7 +75,7 @@ export const FormSignup = () => {
         throw error
       }
       
-      setMessage({text: "Usuário criado com sucesso", error: false})
+      setMessage({text: "Por favor, verifique seu e-mail", error: false})
 
       router.refresh()
 
@@ -122,6 +124,16 @@ export const FormSignup = () => {
 
         <Form.Button text="Cadastre-se" type="submit" disabled={isSubmitting} />
       </form>
+      <div className="text-sm text-center mt-2">
+        <p>
+          Já possui uma conta?
+        </p>
+        <p className="underline text-blue-400">
+          <Link href="/login">
+            Fazer login
+          </Link>
+        </p>
+      </div>
     </FormProvider>
   )
 }

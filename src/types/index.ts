@@ -9,6 +9,24 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      querys: {
+        Row: {
+          created_at: string
+          id: number
+          ticker: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          ticker?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          ticker?: string | null
+        }
+        Relationships: []
+      }
       stocks: {
         Row: {
           created_at: string
@@ -68,6 +86,7 @@ export interface Database {
           {
             foreignKeyName: "user_id_fkey"
             columns: ["id"]
+            isOneToOne: true
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
