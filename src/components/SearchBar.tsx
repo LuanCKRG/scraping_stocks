@@ -5,6 +5,7 @@ import { BiSearchAlt } from "react-icons/bi"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { SubmitHandler, useForm } from "react-hook-form"
 import {useRouter, usePathname, useParams} from "next/navigation"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 
 const searchStockSchema = z.object({
   search: z.string()
@@ -23,7 +24,10 @@ export const SearchBar = () => {
 
   const { handleSubmit, register, formState: {errors} } = searchStockForm
 
-  const handleSearchStock: SubmitHandler<searchStockType> = ({search}) => {
+  const supabase = createClientComponentClient()
+
+  const handleSearchStock: SubmitHandler<searchStockType> = async ({search}) => {
+    await supabase.from("querys").insert({ticker: search})
     replace(`/dashboard/stocks/${search}`)
   }
 

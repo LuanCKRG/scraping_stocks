@@ -34,7 +34,7 @@ export const Header = () => {
         </nav>
       </header>
 
-      <nav className={`flex flex-col transition-all duration-200 h-0 md:hidden ${isOpen ? "opacity-100 h-fit" : "opacity-0"}`}>
+      <nav className={`flex flex-col transition-all duration-200 h-0 md:hidden ${isOpen ? "opacity-100 h-fit" : "opacity-0 hidden"}`}>
         <Link href="/dashboard/stocks" className="text-center underline underline-offset-2">
           Ações
         </Link>

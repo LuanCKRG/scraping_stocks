@@ -9,6 +9,36 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      exchanges: {
+        Row: {
+          created_at: string
+          date: string | null
+          href: string | null
+          id: number
+          src: string
+          table: Json[]
+          title: string | null
+        }
+        Insert: {
+          created_at?: string
+          date?: string | null
+          href?: string | null
+          id?: number
+          src: string
+          table: Json[]
+          title?: string | null
+        }
+        Update: {
+          created_at?: string
+          date?: string | null
+          href?: string | null
+          id?: number
+          src?: string
+          table?: Json[]
+          title?: string | null
+        }
+        Relationships: []
+      }
       querys: {
         Row: {
           created_at: string
@@ -34,19 +64,19 @@ export interface Database {
           href: string
           id: number
           recomendation: string
-          src: string
+          src: Database["public"]["Enums"]["org"]
           target_price: string
           ticker: string
         }
         Insert: {
           created_at?: string
-          date?: string
-          href?: string
+          date: string
+          href: string
           id?: number
-          recomendation?: string
-          src?: string
-          target_price?: string
-          ticker?: string
+          recomendation: string
+          src: Database["public"]["Enums"]["org"]
+          target_price: string
+          ticker: string
         }
         Update: {
           created_at?: string
@@ -54,7 +84,7 @@ export interface Database {
           href?: string
           id?: number
           recomendation?: string
-          src?: string
+          src?: Database["public"]["Enums"]["org"]
           target_price?: string
           ticker?: string
         }
@@ -100,7 +130,12 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      org: "Inter Invest" | "XP" | "BTG Pactual" | "Banco Safra"
+      org:
+        | "Inter Invest"
+        | "XP"
+        | "BTG Pactual"
+        | "Banco Safra"
+        | "Tranding View"
     }
     CompositeTypes: {
       [_ in never]: never

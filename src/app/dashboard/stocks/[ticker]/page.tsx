@@ -8,6 +8,7 @@ const Page = async ({params}: {params: {ticker: string}}) => {
   const ticker = params.ticker.toUpperCase()
 
   const supabase = createServerComponentClient<Database>({cookies})
+  
   const {data: stocks} = await supabase.from("stocks").select("*").eq("ticker", ticker)
 
   if(stocks!.length > 0) {
