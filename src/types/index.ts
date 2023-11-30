@@ -39,21 +39,54 @@ export interface Database {
         }
         Relationships: []
       }
-      querys: {
+      indexes: {
         Row: {
           created_at: string
           id: number
-          ticker: string | null
+          name: string
+          profitability: string
+          sharpe_index: string
+          type: Database["public"]["Enums"]["type"]
+          volatility: string
         }
         Insert: {
           created_at?: string
           id?: number
-          ticker?: string | null
+          name: string
+          profitability: string
+          sharpe_index: string
+          type: Database["public"]["Enums"]["type"]
+          volatility: string
         }
         Update: {
           created_at?: string
           id?: number
-          ticker?: string | null
+          name?: string
+          profitability?: string
+          sharpe_index?: string
+          type?: Database["public"]["Enums"]["type"]
+          volatility?: string
+        }
+        Relationships: []
+      }
+      querys: {
+        Row: {
+          created_at: string
+          id: number
+          ticker: string
+          type_search: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          ticker: string
+          type_search?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          ticker?: string
+          type_search?: string | null
         }
         Relationships: []
       }
@@ -95,22 +128,22 @@ export interface Database {
           created_at: string
           display_name: string | null
           email: string | null
-          favorite_stocks: string | null
           id: string
+          indexes: string[]
         }
         Insert: {
           created_at?: string
           display_name?: string | null
           email?: string | null
-          favorite_stocks?: string | null
           id: string
+          indexes?: string[]
         }
         Update: {
           created_at?: string
           display_name?: string | null
           email?: string | null
-          favorite_stocks?: string | null
           id?: string
+          indexes?: string[]
         }
         Relationships: [
           {
@@ -136,6 +169,7 @@ export interface Database {
         | "BTG Pactual"
         | "Banco Safra"
         | "Tranding View"
+      type: "stock" | "fii" | "etf"
     }
     CompositeTypes: {
       [_ in never]: never
