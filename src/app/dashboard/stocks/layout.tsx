@@ -1,6 +1,6 @@
 import { SearchBar } from "@/components/SearchBar"
 
-export const StocksLayout = ({ children }: { children: React.ReactNode }) => {
+const StocksLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <SearchBar />
