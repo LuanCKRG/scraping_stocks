@@ -16,14 +16,17 @@ const Page = async () => {
   const active_type = {
     "stock": "Ação",
     "fii": "FII",
-    "etf": "ETF"
+    "etf": "ETF",
+    "fundo": "Fundo",
+    "bdr": "BDR",
+    "index": "Índice",
   }
 
   let csv = 'Ativo,Rentabilidade,Volatilidade,Ìndice de Sharpe,Tipo\n'
 
   indexes?.forEach(
     (row) => {
-      csv += row.name
+      csv += `"${row.name}"`
       csv += ',' + `"${row.profitability}"`
       csv += ',' + `"${row.volatility}"`
       csv += ',' + `"${row.sharpe_index}"`
