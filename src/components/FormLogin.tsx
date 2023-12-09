@@ -1,7 +1,7 @@
 "use client"
 
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
-import { Form } from "./Form"
+import { Form } from "../patterns/Form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"

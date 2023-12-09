@@ -24,6 +24,10 @@ export const Header = () => {
             Ações
           </Link>
 
+          <Link href="/dashboard/indexes" className="bg-black text-white hover:bg-inherit hover:text-inherit rounded-md py-0.5 px-2 border-2 border-black">
+            Índices
+          </Link>
+
           <Link href="/dashboard/sheets" className="bg-black text-white hover:bg-inherit hover:text-inherit rounded-md py-0.5 px-2 border-2 border-black">
             Planilhas
           </Link>
@@ -37,6 +41,10 @@ export const Header = () => {
       <nav className={`flex flex-col transition-all duration-200 h-0 md:hidden ${isOpen ? "opacity-100 h-fit" : "opacity-0 hidden"}`}>
         <Link href="/dashboard/stocks" className="text-center underline underline-offset-2">
           Ações
+        </Link>
+
+        <Link href="/dashboard/indexes" className="text-center underline underline-offset-2">
+          Índices
         </Link>
 
         <Link href="/dashboard/sheets" className="text-center underline underline-offset-2">

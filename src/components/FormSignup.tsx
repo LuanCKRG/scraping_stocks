@@ -7,7 +7,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import {createClientComponentClient} from "@supabase/auth-helpers-nextjs"
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { Form } from './Form'
+import { Form } from '../patterns/Form'
 import { UserAlreadyExistsError } from '@/use-cases/errors/user-already-existss-error'
 import { Database } from '@/types'
 import Link from 'next/link'
