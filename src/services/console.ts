@@ -2,12 +2,17 @@
 
 import { cookies } from "next/headers"
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs"
-import { createClient } from "@supabase/supabase-js"
 import { Database } from "@/types"
 
 
 
 const supabase = createServerActionClient<Database>({ cookies })
+
+export const getAllStocksFromTV = async () => {
+  const {data} = await supabase.from("stocks").select("target_price, ticker").eq("src", "Tranding View")
+
+  return {stocks: data!}
+}
 
 export const getActiveList = async (search: string) => {
   const { data: activeList } = await supabase.from("indexes").select("name").eq("name", search)
