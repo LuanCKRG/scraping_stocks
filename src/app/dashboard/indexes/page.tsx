@@ -26,7 +26,7 @@ const Page = async () => {
   indexes?.forEach(
     (row) => {
       csv += `"${row.name}"`
-      csv += `"${stocks?.find(({ticker, target_price}) => ticker === row.name)?.target_price || "-" }"`
+      csv += "," + `"${stocks?.find(({ticker, target_price}) => ticker === row.name)?.target_price || "-" }"`
       csv += ',' + `"${row.profitability}"`
       csv += ',' + `"${row.volatility}"`
       csv += ',' + `"${row.sharpe_index}"`
